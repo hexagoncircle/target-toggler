@@ -1,0 +1,64 @@
+class TargetToggler extends HTMLElement {
+  connectedCallback() {
+    this.controller = new AbortController();
+    const { signal } = this.controller;
+
+    this.setupTarget();
+    this.setupToggle(signal);
+  }
+
+  disconnectedCallback() {
+    console.log("disconnect");
+    this.controller.abort();
+  }
+
+  setupTarget() {
+    if (!this.visible) this.target.setAttribute("hidden", "");
+  }
+
+  setupToggle(signal) {
+    this.toggle = this.querySelector("button");
+
+    if (!this.toggle) {
+      throw new Error(`${this.localName} must contain a <button> element.`);
+    }
+
+    this.toggle.setAttribute("aria-expanded", this.visible);
+    this.toggle.setAttribute("aria-controls", this.targetId);
+    this.toggle.addEventListener("click", () => this.handleClick(), { signal });
+  }
+
+  handleClick() {
+    let expanded = this.toggle.getAttribute("aria-expanded") === "true" || false;
+
+    this.toggle.setAttribute("aria-expanded", !expanded);
+    this.target.toggleAttribute("hidden", expanded);
+  }
+
+  get target() {
+    const el = document.getElementById(this.targetId);
+
+    if (!el) {
+      throw new Error(`${this.localName} cannot find element with id "${this.targetId}".`);
+    }
+
+    return el;
+  }
+
+  get targetId() {
+    const attr = this.getAttribute("target-id");
+
+    if (!attr) {
+      throw new Error(`${this.localName} requires a "target-id" attribute set to an element id`);
+    }
+
+    return attr;
+  }
+
+  get visible() {
+    const attr = "target-visible";
+    return (this.hasAttribute(attr) && this.getAttribute(attr) !== "false") || false;
+  }
+}
+
+window.customElements.define("target-toggler", TargetToggler);
