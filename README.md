@@ -1,4 +1,4 @@
-# target-toggler
+# `<target-toggler>`
 
 A Web Component utility for toggling the visibility of another element on the page.
 

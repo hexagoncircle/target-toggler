@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&lt;target-toggler&gt; demo</title>
+    <style>
+      target-toggler:not(:defined) {
+        display: none;
+      }
+
+      target-toggler:defined {
+        display: contents;
+      }
+
+      code {
+        position: relative;
+        top: -0.05em;
+        background-color: #ededed;
+        padding: 0.1em 0.2em;
+        border-radius: 0.125em;
+      }
+
+      .with-icon button {
+        display: flex;
+        align-items: center;
+        gap: 0.125rem;
+      }
+
+      :is(.with-icon, .plus-minus) svg {
+        --size: 1em;
+        width: var(--size);
+        height: var(--size);
+      }
+
+      .with-icon [aria-expanded="true"] svg {
+        transform: scaleY(-1);
+      }
+
+      .cool-toggler button {
+        --hs: 250 70%;
+        --l: 50%;
+
+        all: unset;
+        outline: revert;
+        outline-offset: 2px;
+        color: white;
+        background-color: hsl(var(--hs) var(--l));
+        padding: 0.5rem 1.25rem;
+        border-radius: 0.25rem;
+      }
+
+      .cool-toggler button:hover {
+        --l: 40%;
+      }
+
+      .cool-toggler button:active {
+        --l: 45%;
+        translate: 0 1px;
+      }
+
+      .plus-minus button {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem;
+        background-color: transparent;
+        border: 2px solid lightgray;
+        border-radius: 50%;
+      }
+
+      .plus-minus button:active {
+        translate: 0 1px;
+      }
+
+      .plus-minus button .icon-expanded {
+        display: none;
+      }
+
+      .plus-minus [aria-expanded="true"] .icon-collapsed {
+        display: none;
+      }
+
+      .plus-minus [aria-expanded="true"] .icon-expanded {
+        display: block;
+      }
+
+      .cluster {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .visually-hidden {
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+      }
+
+      main {
+        max-inline-size: 80ch;
+      }
+
+      body {
+        font-family: system-ui;
+        margin: 0;
+        padding: 2rem;
+      }
+
+      p {
+        font-size: 1.125rem;
+        line-height: 1.5;
+      }
+
+      .blocker {
+        margin-block: 1rem;
+        padding: 1rem;
+        background-color: papayawhip;
+      }
+
+      .blocker p {
+        margin: 0;
+      }
+    </style>
+    <script type="module" src="target-toggler.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>
+        <code>&lt;target-toggler&gt;</code> Web Component demo
+      </h1>
+      <p>
+        <a href="https://github.com/hexagoncircle/target-toggler">Source code</a> available on GitHub.
+      </p>
+      <div class="cluster">
+        <target-toggler target-id="section-1">
+          <button>Toggle section 1</button>
+        </target-toggler>
+        <target-toggler class="with-icon" target-id="section-2" target-visible>
+          <button>
+            <span>Toggle section 2</span>
+            <svg viewBox="0 0 320 512" width="16" aria-hidden="true">
+              <path d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"/>
+            </svg>
+          </button>
+        </target-toggler>
+        <target-toggler class="cool-toggler" target-id="section-3">
+          <button>Toggle section 3</button>
+        </target-toggler>
+        <target-toggler class="plus-minus" target-id="section-4" target-visible>
+          <button>
+            <span class="visually-hidden">Toggle section 4</span>
+            <svg class="icon-collapsed" viewBox="0 0 448 512" width="16" aria-hidden="true">
+              <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+            </svg>
+            <svg class="icon-expanded" viewBox="0 0 448 512" width="16" aria-hidden="true">
+              <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+            </svg>
+          </button>
+        </target-toggler>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="blocker">
+        <p>A special announcement block that gets between toggle buttons and their toggled content.</p>
+      </section>
+      <article id="section-1">
+        <h2>Section 1</h2>
+        <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur porro quae modi veniam ad neque sunt similique vel necessitatibus ratione, fugiat aperiam consequuntur, eveniet, optio dignissimos qui ducimus quaerat numquam.
+    </p>
+      </article>
+      <article id="section-2">
+        <h2>Section 2</h2>
+        <p>
+      Voluptates est harum doloremque nobis doloribus dicta labore dignissimos laborum tempore.
+      Quod nam corporis quaerat aspernatur voluptate suscipit dolorum consectetur laudantium nisi.
+    </p>
+      </article>
+      <article id="section-3">
+        <h2>Section 3</h2>
+        <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates est harum doloremque nobis doloribus dicta labore dignissimos.
+    </p>
+      </article>
+      <article id="section-4">
+        <h2>Section 4</h2>
+        <p>
+      Voluptates est harum doloremque nobis doloribus dicta labore dignissimos laborum tempore.
+      Quod nam corporis quaerat aspernatur voluptate suscipit dolorum consectetur laudantium nisi.
+    </p>
+      </article>
+    </main>
+  </body>
+</html>
