@@ -1,2 +1,58 @@
 # target-toggler
-Web Component for toggling visibility of an element
+
+A Web Component utility for toggling the visibility of another element on the page.
+
+## Why?
+
+When toggling the dislay of some content, there are rare occasions that I want `<details>` element disclosure widget-style funtionality but would like to have the `<summary>` element detached or live outside of it's related `<details>` container. This Web Component enhances a `<button>` with the ability to toggle the contents of an element anywhere on a page.
+
+## Improvements and accessbility considerations
+
+Please open a [new issue](https://github.com/hexagoncircle/target-toggler/issues/new) and share your ideas! I highly value any community feedback on how to improve this implementation.
+
+## Usage
+
+To get things working:
+
+- Wrap any `<button>` with a `<target-toggler>`.
+- Set a `target-id` attribute that matches the `id` of a page element.
+
+```html
+<script type="module" src="target-toggler.js"></script>
+
+<target-toggler target-id="more-info">
+  <button>Show more info</button>
+</target-toggler>
+
+<section>Some other content</section>
+
+<section id="more-info">
+  <!-- some good extra info -->
+</section>
+```
+
+A `hidden` attribute will be added to that target element. When javascript is disabled, content will fallback to being visible, as the good web intended.
+
+## Make content visible by default
+
+Add a `target-visible` attribute and the targeted element will start off visible.
+
+```html
+<target-toggler target-id="more-info" target-visible>
+  <button>Show more info</button>
+</target-toggler>
+```
+
+## Display styles
+
+The toggle button may not be necessary to show on screen since it does nothing without JS, so it can be hidden with CSS. I also prefer to set `display: contents` when the `<target-toggler>` element is defined so that it can rely on the display set for the `<button>` instead.
+
+```css
+target-toggler:not(:defined) {
+  display: none;
+}
+
+target-toggler:defined {
+  display: contents;
+}
+```
