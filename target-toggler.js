@@ -6,14 +6,13 @@ class TargetToggler extends HTMLElement {
       throw new Error(`${this.localName} must contain a <button> element.`);
     }
 
+    if (!this.visible) this.target.setAttribute("hidden", "");
+
     this.controller = new AbortController();
     const { signal } = this.controller;
 
-    if (!this.visible) this.target.setAttribute("hidden", "");
-
     this.toggle.setAttribute("aria-expanded", this.visible);
     this.toggle.setAttribute("aria-controls", this.targetId);
-
     this.toggle.addEventListener("click", () => this.handleClick(), { signal });
   }
 
