@@ -8,7 +8,6 @@ class TargetToggler extends HTMLElement {
   }
 
   disconnectedCallback() {
-    console.log("disconnect");
     this.controller.abort();
   }
 
