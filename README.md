@@ -2,6 +2,8 @@
 
 A Web Component utility for toggling the visibility of another element on the page.
 
+[Demo](https://hexagoncircle.github.io/target-toggler/demo.html)
+
 ## Why?
 
 When toggling the dislay of some content, there are rare occasions that I want `<details>` element disclosure widget-style funtionality but would like to have the `<summary>` element detached or live outside of it's related `<details>` container. This Web Component enhances a `<button>` with the ability to toggle the contents of an element anywhere on a page.
@@ -54,5 +56,15 @@ target-toggler:not(:defined) {
 
 target-toggler:defined {
   display: contents;
+}
+```
+
+## Toggle styles
+
+The `aria-expanded` attribute can be helpful for setting button styles when its respective content is visible. Here's an example that will flip an arrow icon, which can be seen in the [demo](https://hexagoncircle.github.io/target-toggler/demo.html):
+
+```css
+.button-with-icon[aria-expanded="true"] svg {
+  transform: scaleY(-1);
 }
 ```
