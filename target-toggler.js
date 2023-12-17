@@ -1,30 +1,24 @@
 class TargetToggler extends HTMLElement {
   connectedCallback() {
-    this.controller = new AbortController();
-    const { signal } = this.controller;
-
-    this.setupTarget();
-    this.setupToggle(signal);
-  }
-
-  disconnectedCallback() {
-    this.controller.abort();
-  }
-
-  setupTarget() {
-    if (!this.visible) this.target.setAttribute("hidden", "");
-  }
-
-  setupToggle(signal) {
     this.toggle = this.querySelector("button");
 
     if (!this.toggle) {
       throw new Error(`${this.localName} must contain a <button> element.`);
     }
 
+    this.controller = new AbortController();
+    const { signal } = this.controller;
+
+    if (!this.visible) this.target.setAttribute("hidden", "");
+
     this.toggle.setAttribute("aria-expanded", this.visible);
     this.toggle.setAttribute("aria-controls", this.targetId);
+
     this.toggle.addEventListener("click", () => this.handleClick(), { signal });
+  }
+
+  disconnectedCallback() {
+    this.controller.abort();
   }
 
   handleClick() {
