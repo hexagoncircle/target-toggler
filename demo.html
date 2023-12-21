@@ -13,6 +13,15 @@
         display: contents;
       }
 
+      button {
+        font: inherit;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
       code {
         position: relative;
         top: -0.05em;
@@ -84,6 +93,13 @@
         display: block;
       }
 
+      .button-link {
+        all: unset;
+        outline: revert;
+        color: LinkText;
+        text-decoration: underline;
+      }
+
       .cluster {
         display: flex;
         flex-wrap: wrap;
@@ -132,10 +148,10 @@
     <header>
       <h1>
         <code>&lt;target-toggler&gt;</code> Web Component demo
-      </h1>
+  </h1>
       <p>
         <a href="https://github.com/hexagoncircle/target-toggler">Source code</a> available on GitHub.
-      </p>
+  </p>
       <div class="cluster">
         <target-toggler target-id="section-1">
           <button>Toggle section 1</button>
@@ -148,10 +164,10 @@
             </svg>
           </button>
         </target-toggler>
-        <target-toggler target-id="section-3">
+        <target-toggler target-id="section-3" target-visible>
           <button class="cool-toggler">Toggle section 3</button>
         </target-toggler>
-        <target-toggler target-id="section-4" target-visible>
+        <target-toggler target-id="section-4">
           <button class="plus-minus">
             <span class="visually-hidden">Toggle section 4</span>
             <svg class="icon-collapsed" viewBox="0 0 448 512" width="16" aria-hidden="true">
@@ -171,9 +187,11 @@
       </section>
       <article id="section-1">
         <h2>Section 1</h2>
-        <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur porro quae modi veniam ad neque sunt similique vel necessitatibus ratione, fugiat aperiam consequuntur, eveniet, optio dignissimos qui ducimus quaerat numquam.
-    </p>
+        <p>This component is also useful on the occasion we want to toggle some extra content from a toggle living in some paragraph copy. For example, <target-toggler target-id="special-media">
+            <button class="button-link">this reveals an image of a dog</button>
+          </target-toggler> when clicked. He's a good boy.
+      </p>
+        <img id="special-media" src='https://images.unsplash.com/photo-1598134493179-51332e56807f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MDMxNjg1MzB8&ixlib=rb-4.0.3&q=80&w=600' alt=''>
       </article>
       <article id="section-2">
         <h2>Section 2</h2>
