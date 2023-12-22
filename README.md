@@ -8,10 +8,6 @@ A Web Component utility for toggling the visibility of another element on the pa
 
 When toggling the display of some content, there are rare occasions that I want `<details>` element disclosure widget-style funtionality but would like to have the `<summary>` element detached or live outside of it's related `<details>` container. This Web Component enhances a `<button>` with the ability to toggle the contents of an element anywhere on a page.
 
-## Improvements and accessbility considerations
-
-Please open a [new issue](https://github.com/hexagoncircle/target-toggler/issues/new) and share your ideas! I highly value any community feedback on how to improve this implementation.
-
 ## Usage
 
 To get things working:
@@ -68,3 +64,7 @@ The `aria-expanded` attribute can be helpful for setting button styles when its 
   transform: scaleY(-1);
 }
 ```
+
+## Improvements?
+
+Please open a [new issue](https://github.com/hexagoncircle/target-toggler/issues/new) and share your ideas! I highly value any community feedback on how to improve this implementation.
