@@ -21,6 +21,7 @@
 
       button {
         font: inherit;
+        color: currentcolor;
       }
 
       img {
@@ -42,8 +43,12 @@
         gap: 0.125rem;
       }
 
+      .with-icon span {
+        display: block;
+      }
+
       .with-icon svg {
-        --size: 1em;
+        --size: 0.9em;
         width: var(--size);
         height: var(--size);
       }
@@ -126,7 +131,7 @@
         padding-block: 0.2rem;
       }
 
-      .feature-card .content :last-child {
+      .feature-card .content button {
         margin-block-start: auto;
       }
 
