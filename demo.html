@@ -87,9 +87,14 @@
         --_pad: 1.5rem;
         display: grid;
         column-gap: 1rem;
-        grid-template-columns: minmax(min(15rem, 100%), 1fr) 1fr;
         width: 100%;
         border: 1px solid;
+      }
+
+      @media (min-width: 33rem) {
+        .feature-card {
+          grid-template-columns: minmax(min(15rem, 100%), 1fr) 1fr;
+        }
       }
 
       .feature-card .heading {
@@ -185,6 +190,9 @@
 
     <main id="main" class="flow">
       <article class="feature-card">
+        <figure>
+          <img src='https://images.unsplash.com/photo-1611854778196-e8ab095456af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MDMyNjAyNzJ8&ixlib=rb-4.0.3&q=80&w=600' alt=''>
+        </figure>
         <div class="content">
           <h2 class="heading">Great coffee needs a great grind</h2>
           <p>Start your day with the best coffee beans, a nice mug, and the grinder that that grinds just right.</p>
@@ -197,9 +205,6 @@
             </button>
           </target-toggler>
         </div>
-        <figure>
-          <img src='https://images.unsplash.com/photo-1611854778196-e8ab095456af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MDMyNjAyNzJ8&ixlib=rb-4.0.3&q=80&w=600' alt=''>
-        </figure>
         <div id="coffee-features" class="features">
           <ul>
             <li>New best-in-class Gen 2 Brew Burrs</li>
