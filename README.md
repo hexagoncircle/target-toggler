@@ -6,7 +6,7 @@ A Web Component utility for toggling the visibility of another element on the pa
 
 ## Why?
 
-When toggling the display of some content, there are rare occasions that I want `<details>` element disclosure widget-style funtionality but would like to have the `<summary>` element detached or live outside of it's related `<details>` container. This Web Component enhances a `<button>` with the ability to toggle the contents of an element anywhere on a page.
+When toggling the display of some content, there are rare occasions that I want `<details>` element disclosure widget-style funtionality but with the `<summary>` element detached or living outside of its related `<details>` container. This Web Component enhances a `<button>` with the ability to toggle the contents of an element anywhere on a page.
 
 ## Usage
 
